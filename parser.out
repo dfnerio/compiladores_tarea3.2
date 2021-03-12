@@ -1,0 +1,1641 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    DIGITS
+    LETTER
+    THEN
+    WHILE
+    WS
+
+Grammar
+
+Rule 0     S' -> parser
+Rule 1     parser -> programa
+Rule 2     parser -> bloque
+Rule 3     parser -> vars
+Rule 4     parser -> estatuto
+Rule 5     parser -> asignacion
+Rule 6     parser -> condicion
+Rule 7     parser -> escritura
+Rule 8     parser -> expresion
+Rule 9     parser -> varcte
+Rule 10    parser -> exp
+Rule 11    parser -> termino
+Rule 12    parser -> factor
+Rule 13    parser -> tipo
+Rule 14    parser -> empty
+Rule 15    vars -> VAR v1
+Rule 16    v1 -> ID v2 DOTS tipo DOTCOMMA v1
+Rule 17    v1 -> empty
+Rule 18    v2 -> COMMA ID v2
+Rule 19    v2 -> empty
+Rule 20    programa -> PROGRAM ID DOTS p1 bloque
+Rule 21    p1 -> vars
+Rule 22    p1 -> empty
+Rule 23    bloque -> LBRACK b1 RBRACK
+Rule 24    b1 -> estatuto b1
+Rule 25    b1 -> empty
+Rule 26    estatuto -> asignacion
+Rule 27    estatuto -> condicion
+Rule 28    estatuto -> escritura
+Rule 29    asignacion -> ID EQUAL expresion
+Rule 30    condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA
+Rule 31    c1 -> ELSE bloque
+Rule 32    c1 -> empty
+Rule 33    escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA
+Rule 34    es1 -> expresion es2
+Rule 35    es1 -> ID es2
+Rule 36    es2 -> COMMA es1
+Rule 37    es2 -> empty
+Rule 38    expresion -> exp e1
+Rule 39    e1 -> e2 exp
+Rule 40    e1 -> empty
+Rule 41    e2 -> RELOP
+Rule 42    exp -> termino ex1
+Rule 43    ex1 -> ex2 exp
+Rule 44    ex1 -> empty
+Rule 45    ex2 -> PLUS
+Rule 46    ex2 -> MINUS
+Rule 47    termino -> factor t1
+Rule 48    t1 -> t2 termino
+Rule 49    t1 -> empty
+Rule 50    t2 -> TIMES
+Rule 51    t2 -> DIVIDE
+Rule 52    t2 -> empty
+Rule 53    factor -> f1
+Rule 54    factor -> f2
+Rule 55    f1 -> LPAREN expresion RPAREN
+Rule 56    f2 -> f3 varcte
+Rule 57    f3 -> PLUS
+Rule 58    f3 -> MINUS
+Rule 59    f3 -> empty
+Rule 60    varcte -> ID
+Rule 61    varcte -> CTEI
+Rule 62    varcte -> CTEF
+Rule 63    tipo -> INT
+Rule 64    tipo -> FLOAT
+Rule 65    empty -> <empty>
+
+Terminals, with rules where they appear
+
+COMMA                : 18 36
+CTEF                 : 62
+CTEI                 : 61
+DIGITS               : 
+DIVIDE               : 51
+DOTCOMMA             : 16 30 33
+DOTS                 : 16 20
+ELSE                 : 31
+EQUAL                : 29
+FLOAT                : 64
+ID                   : 16 18 20 29 35 60
+IF                   : 30
+INT                  : 63
+LBRACK               : 23
+LETTER               : 
+LPAREN               : 30 33 55
+MINUS                : 46 58
+PLUS                 : 45 57
+PRINT                : 33
+PROGRAM              : 20
+RBRACK               : 23
+RELOP                : 41
+RPAREN               : 30 33 55
+THEN                 : 
+TIMES                : 50
+VAR                  : 15
+WHILE                : 
+WS                   : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 5 26
+b1                   : 23 24
+bloque               : 2 20 30 31
+c1                   : 30
+condicion            : 6 27
+e1                   : 38
+e2                   : 39
+empty                : 14 17 19 22 25 32 37 40 44 49 52 59
+es1                  : 33 36
+es2                  : 34 35
+escritura            : 7 28
+estatuto             : 4 24
+ex1                  : 42
+ex2                  : 43
+exp                  : 10 38 39 43
+expresion            : 8 29 30 34 55
+f1                   : 53
+f2                   : 54
+f3                   : 56
+factor               : 12 47
+p1                   : 20
+parser               : 0
+programa             : 1
+t1                   : 47
+t2                   : 48
+termino              : 11 42 48
+tipo                 : 13 16
+v1                   : 15 16
+v2                   : 16 18
+varcte               : 9 56
+vars                 : 3 21
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . parser
+    (1) parser -> . programa
+    (2) parser -> . bloque
+    (3) parser -> . vars
+    (4) parser -> . estatuto
+    (5) parser -> . asignacion
+    (6) parser -> . condicion
+    (7) parser -> . escritura
+    (8) parser -> . expresion
+    (9) parser -> . varcte
+    (10) parser -> . exp
+    (11) parser -> . termino
+    (12) parser -> . factor
+    (13) parser -> . tipo
+    (14) parser -> . empty
+    (20) programa -> . PROGRAM ID DOTS p1 bloque
+    (23) bloque -> . LBRACK b1 RBRACK
+    (15) vars -> . VAR v1
+    (26) estatuto -> . asignacion
+    (27) estatuto -> . condicion
+    (28) estatuto -> . escritura
+    (29) asignacion -> . ID EQUAL expresion
+    (30) condicion -> . IF LPAREN expresion RPAREN bloque c1 DOTCOMMA
+    (33) escritura -> . PRINT LPAREN es1 RPAREN DOTCOMMA
+    (38) expresion -> . exp e1
+    (60) varcte -> . ID
+    (61) varcte -> . CTEI
+    (62) varcte -> . CTEF
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (63) tipo -> . INT
+    (64) tipo -> . FLOAT
+    (65) empty -> .
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+
+  ! shift/reduce conflict for ID resolved as shift
+  ! shift/reduce conflict for CTEI resolved as shift
+  ! shift/reduce conflict for CTEF resolved as shift
+    PROGRAM         shift and go to state 16
+    LBRACK          shift and go to state 18
+    VAR             shift and go to state 19
+    ID              shift and go to state 17
+    IF              shift and go to state 20
+    PRINT           shift and go to state 22
+    CTEI            shift and go to state 23
+    CTEF            shift and go to state 24
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+    $end            reduce using rule 65 (empty -> .)
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+
+  ! ID              [ reduce using rule 65 (empty -> .) ]
+  ! CTEI            [ reduce using rule 65 (empty -> .) ]
+  ! CTEF            [ reduce using rule 65 (empty -> .) ]
+
+    parser                         shift and go to state 1
+    programa                       shift and go to state 2
+    bloque                         shift and go to state 3
+    vars                           shift and go to state 4
+    estatuto                       shift and go to state 5
+    asignacion                     shift and go to state 6
+    condicion                      shift and go to state 7
+    escritura                      shift and go to state 8
+    expresion                      shift and go to state 9
+    varcte                         shift and go to state 10
+    exp                            shift and go to state 11
+    termino                        shift and go to state 12
+    factor                         shift and go to state 13
+    tipo                           shift and go to state 14
+    empty                          shift and go to state 15
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+
+state 1
+
+    (0) S' -> parser .
+
+
+
+state 2
+
+    (1) parser -> programa .
+
+    $end            reduce using rule 1 (parser -> programa .)
+
+
+state 3
+
+    (2) parser -> bloque .
+
+    $end            reduce using rule 2 (parser -> bloque .)
+
+
+state 4
+
+    (3) parser -> vars .
+
+    $end            reduce using rule 3 (parser -> vars .)
+
+
+state 5
+
+    (4) parser -> estatuto .
+
+    $end            reduce using rule 4 (parser -> estatuto .)
+
+
+state 6
+
+    (5) parser -> asignacion .
+    (26) estatuto -> asignacion .
+
+  ! reduce/reduce conflict for $end resolved using rule 5 (parser -> asignacion .)
+    $end            reduce using rule 5 (parser -> asignacion .)
+
+  ! $end            [ reduce using rule 26 (estatuto -> asignacion .) ]
+
+
+state 7
+
+    (6) parser -> condicion .
+    (27) estatuto -> condicion .
+
+  ! reduce/reduce conflict for $end resolved using rule 6 (parser -> condicion .)
+    $end            reduce using rule 6 (parser -> condicion .)
+
+  ! $end            [ reduce using rule 27 (estatuto -> condicion .) ]
+
+
+state 8
+
+    (7) parser -> escritura .
+    (28) estatuto -> escritura .
+
+  ! reduce/reduce conflict for $end resolved using rule 7 (parser -> escritura .)
+    $end            reduce using rule 7 (parser -> escritura .)
+
+  ! $end            [ reduce using rule 28 (estatuto -> escritura .) ]
+
+
+state 9
+
+    (8) parser -> expresion .
+
+    $end            reduce using rule 8 (parser -> expresion .)
+
+
+state 10
+
+    (9) parser -> varcte .
+
+    $end            reduce using rule 9 (parser -> varcte .)
+
+
+state 11
+
+    (10) parser -> exp .
+    (38) expresion -> exp . e1
+    (39) e1 -> . e2 exp
+    (40) e1 -> . empty
+    (41) e2 -> . RELOP
+    (65) empty -> .
+
+  ! reduce/reduce conflict for $end resolved using rule 10 (parser -> exp .)
+    $end            reduce using rule 10 (parser -> exp .)
+    RELOP           shift and go to state 35
+
+  ! $end            [ reduce using rule 65 (empty -> .) ]
+
+    e1                             shift and go to state 32
+    e2                             shift and go to state 33
+    empty                          shift and go to state 34
+
+state 12
+
+    (11) parser -> termino .
+    (42) exp -> termino . ex1
+    (43) ex1 -> . ex2 exp
+    (44) ex1 -> . empty
+    (45) ex2 -> . PLUS
+    (46) ex2 -> . MINUS
+    (65) empty -> .
+
+  ! reduce/reduce conflict for $end resolved using rule 11 (parser -> termino .)
+    $end            reduce using rule 11 (parser -> termino .)
+    PLUS            shift and go to state 39
+    MINUS           shift and go to state 40
+    RELOP           reduce using rule 65 (empty -> .)
+
+  ! $end            [ reduce using rule 65 (empty -> .) ]
+
+    ex1                            shift and go to state 36
+    ex2                            shift and go to state 37
+    empty                          shift and go to state 38
+
+state 13
+
+    (12) parser -> factor .
+    (47) termino -> factor . t1
+    (48) t1 -> . t2 termino
+    (49) t1 -> . empty
+    (50) t2 -> . TIMES
+    (51) t2 -> . DIVIDE
+    (52) t2 -> . empty
+    (65) empty -> .
+
+  ! reduce/reduce conflict for $end resolved using rule 12 (parser -> factor .)
+    $end            reduce using rule 12 (parser -> factor .)
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    PLUS            reduce using rule 65 (empty -> .)
+    MINUS           reduce using rule 65 (empty -> .)
+    RELOP           reduce using rule 65 (empty -> .)
+    LPAREN          reduce using rule 65 (empty -> .)
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+  ! $end            [ reduce using rule 65 (empty -> .) ]
+
+    t1                             shift and go to state 41
+    t2                             shift and go to state 42
+    empty                          shift and go to state 43
+
+state 14
+
+    (13) parser -> tipo .
+
+    $end            reduce using rule 13 (parser -> tipo .)
+
+
+state 15
+
+    (14) parser -> empty .
+    (59) f3 -> empty .
+
+    $end            reduce using rule 14 (parser -> empty .)
+    ID              reduce using rule 59 (f3 -> empty .)
+    CTEI            reduce using rule 59 (f3 -> empty .)
+    CTEF            reduce using rule 59 (f3 -> empty .)
+
+
+state 16
+
+    (20) programa -> PROGRAM . ID DOTS p1 bloque
+
+    ID              shift and go to state 46
+
+
+state 17
+
+    (29) asignacion -> ID . EQUAL expresion
+    (60) varcte -> ID .
+
+    EQUAL           shift and go to state 47
+    $end            reduce using rule 60 (varcte -> ID .)
+
+
+state 18
+
+    (23) bloque -> LBRACK . b1 RBRACK
+    (24) b1 -> . estatuto b1
+    (25) b1 -> . empty
+    (26) estatuto -> . asignacion
+    (27) estatuto -> . condicion
+    (28) estatuto -> . escritura
+    (65) empty -> .
+    (29) asignacion -> . ID EQUAL expresion
+    (30) condicion -> . IF LPAREN expresion RPAREN bloque c1 DOTCOMMA
+    (33) escritura -> . PRINT LPAREN es1 RPAREN DOTCOMMA
+
+    RBRACK          reduce using rule 65 (empty -> .)
+    ID              shift and go to state 54
+    IF              shift and go to state 20
+    PRINT           shift and go to state 22
+
+    b1                             shift and go to state 48
+    estatuto                       shift and go to state 49
+    empty                          shift and go to state 50
+    asignacion                     shift and go to state 51
+    condicion                      shift and go to state 52
+    escritura                      shift and go to state 53
+
+state 19
+
+    (15) vars -> VAR . v1
+    (16) v1 -> . ID v2 DOTS tipo DOTCOMMA v1
+    (17) v1 -> . empty
+    (65) empty -> .
+
+    ID              shift and go to state 56
+    $end            reduce using rule 65 (empty -> .)
+    LBRACK          reduce using rule 65 (empty -> .)
+
+    v1                             shift and go to state 55
+    empty                          shift and go to state 57
+
+state 20
+
+    (30) condicion -> IF . LPAREN expresion RPAREN bloque c1 DOTCOMMA
+
+    LPAREN          shift and go to state 58
+
+
+state 21
+
+    (55) f1 -> LPAREN . expresion RPAREN
+    (38) expresion -> . exp e1
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    expresion                      shift and go to state 59
+    exp                            shift and go to state 60
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 22
+
+    (33) escritura -> PRINT . LPAREN es1 RPAREN DOTCOMMA
+
+    LPAREN          shift and go to state 64
+
+
+state 23
+
+    (61) varcte -> CTEI .
+
+    $end            reduce using rule 61 (varcte -> CTEI .)
+    TIMES           reduce using rule 61 (varcte -> CTEI .)
+    DIVIDE          reduce using rule 61 (varcte -> CTEI .)
+    LPAREN          reduce using rule 61 (varcte -> CTEI .)
+    PLUS            reduce using rule 61 (varcte -> CTEI .)
+    MINUS           reduce using rule 61 (varcte -> CTEI .)
+    ID              reduce using rule 61 (varcte -> CTEI .)
+    CTEI            reduce using rule 61 (varcte -> CTEI .)
+    CTEF            reduce using rule 61 (varcte -> CTEI .)
+    RELOP           reduce using rule 61 (varcte -> CTEI .)
+    RPAREN          reduce using rule 61 (varcte -> CTEI .)
+    IF              reduce using rule 61 (varcte -> CTEI .)
+    PRINT           reduce using rule 61 (varcte -> CTEI .)
+    RBRACK          reduce using rule 61 (varcte -> CTEI .)
+    COMMA           reduce using rule 61 (varcte -> CTEI .)
+
+
+state 24
+
+    (62) varcte -> CTEF .
+
+    $end            reduce using rule 62 (varcte -> CTEF .)
+    TIMES           reduce using rule 62 (varcte -> CTEF .)
+    DIVIDE          reduce using rule 62 (varcte -> CTEF .)
+    LPAREN          reduce using rule 62 (varcte -> CTEF .)
+    PLUS            reduce using rule 62 (varcte -> CTEF .)
+    MINUS           reduce using rule 62 (varcte -> CTEF .)
+    ID              reduce using rule 62 (varcte -> CTEF .)
+    CTEI            reduce using rule 62 (varcte -> CTEF .)
+    CTEF            reduce using rule 62 (varcte -> CTEF .)
+    RELOP           reduce using rule 62 (varcte -> CTEF .)
+    RPAREN          reduce using rule 62 (varcte -> CTEF .)
+    IF              reduce using rule 62 (varcte -> CTEF .)
+    PRINT           reduce using rule 62 (varcte -> CTEF .)
+    RBRACK          reduce using rule 62 (varcte -> CTEF .)
+    COMMA           reduce using rule 62 (varcte -> CTEF .)
+
+
+state 25
+
+    (53) factor -> f1 .
+
+    TIMES           reduce using rule 53 (factor -> f1 .)
+    DIVIDE          reduce using rule 53 (factor -> f1 .)
+    LPAREN          reduce using rule 53 (factor -> f1 .)
+    PLUS            reduce using rule 53 (factor -> f1 .)
+    MINUS           reduce using rule 53 (factor -> f1 .)
+    ID              reduce using rule 53 (factor -> f1 .)
+    CTEI            reduce using rule 53 (factor -> f1 .)
+    CTEF            reduce using rule 53 (factor -> f1 .)
+    $end            reduce using rule 53 (factor -> f1 .)
+    RELOP           reduce using rule 53 (factor -> f1 .)
+    RPAREN          reduce using rule 53 (factor -> f1 .)
+    IF              reduce using rule 53 (factor -> f1 .)
+    PRINT           reduce using rule 53 (factor -> f1 .)
+    RBRACK          reduce using rule 53 (factor -> f1 .)
+    COMMA           reduce using rule 53 (factor -> f1 .)
+
+
+state 26
+
+    (54) factor -> f2 .
+
+    TIMES           reduce using rule 54 (factor -> f2 .)
+    DIVIDE          reduce using rule 54 (factor -> f2 .)
+    LPAREN          reduce using rule 54 (factor -> f2 .)
+    PLUS            reduce using rule 54 (factor -> f2 .)
+    MINUS           reduce using rule 54 (factor -> f2 .)
+    ID              reduce using rule 54 (factor -> f2 .)
+    CTEI            reduce using rule 54 (factor -> f2 .)
+    CTEF            reduce using rule 54 (factor -> f2 .)
+    $end            reduce using rule 54 (factor -> f2 .)
+    RELOP           reduce using rule 54 (factor -> f2 .)
+    RPAREN          reduce using rule 54 (factor -> f2 .)
+    IF              reduce using rule 54 (factor -> f2 .)
+    PRINT           reduce using rule 54 (factor -> f2 .)
+    RBRACK          reduce using rule 54 (factor -> f2 .)
+    COMMA           reduce using rule 54 (factor -> f2 .)
+
+
+state 27
+
+    (63) tipo -> INT .
+
+    $end            reduce using rule 63 (tipo -> INT .)
+    DOTCOMMA        reduce using rule 63 (tipo -> INT .)
+
+
+state 28
+
+    (64) tipo -> FLOAT .
+
+    $end            reduce using rule 64 (tipo -> FLOAT .)
+    DOTCOMMA        reduce using rule 64 (tipo -> FLOAT .)
+
+
+state 29
+
+    (56) f2 -> f3 . varcte
+    (60) varcte -> . ID
+    (61) varcte -> . CTEI
+    (62) varcte -> . CTEF
+
+    ID              shift and go to state 66
+    CTEI            shift and go to state 23
+    CTEF            shift and go to state 24
+
+    varcte                         shift and go to state 65
+
+state 30
+
+    (57) f3 -> PLUS .
+
+    ID              reduce using rule 57 (f3 -> PLUS .)
+    CTEI            reduce using rule 57 (f3 -> PLUS .)
+    CTEF            reduce using rule 57 (f3 -> PLUS .)
+
+
+state 31
+
+    (58) f3 -> MINUS .
+
+    ID              reduce using rule 58 (f3 -> MINUS .)
+    CTEI            reduce using rule 58 (f3 -> MINUS .)
+    CTEF            reduce using rule 58 (f3 -> MINUS .)
+
+
+state 32
+
+    (38) expresion -> exp e1 .
+
+    $end            reduce using rule 38 (expresion -> exp e1 .)
+    RPAREN          reduce using rule 38 (expresion -> exp e1 .)
+    ID              reduce using rule 38 (expresion -> exp e1 .)
+    IF              reduce using rule 38 (expresion -> exp e1 .)
+    PRINT           reduce using rule 38 (expresion -> exp e1 .)
+    RBRACK          reduce using rule 38 (expresion -> exp e1 .)
+    COMMA           reduce using rule 38 (expresion -> exp e1 .)
+
+
+state 33
+
+    (39) e1 -> e2 . exp
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    exp                            shift and go to state 67
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 34
+
+    (40) e1 -> empty .
+
+    $end            reduce using rule 40 (e1 -> empty .)
+    RPAREN          reduce using rule 40 (e1 -> empty .)
+    ID              reduce using rule 40 (e1 -> empty .)
+    IF              reduce using rule 40 (e1 -> empty .)
+    PRINT           reduce using rule 40 (e1 -> empty .)
+    RBRACK          reduce using rule 40 (e1 -> empty .)
+    COMMA           reduce using rule 40 (e1 -> empty .)
+
+
+state 35
+
+    (41) e2 -> RELOP .
+
+    LPAREN          reduce using rule 41 (e2 -> RELOP .)
+    PLUS            reduce using rule 41 (e2 -> RELOP .)
+    MINUS           reduce using rule 41 (e2 -> RELOP .)
+    ID              reduce using rule 41 (e2 -> RELOP .)
+    CTEI            reduce using rule 41 (e2 -> RELOP .)
+    CTEF            reduce using rule 41 (e2 -> RELOP .)
+
+
+state 36
+
+    (42) exp -> termino ex1 .
+
+    RELOP           reduce using rule 42 (exp -> termino ex1 .)
+    $end            reduce using rule 42 (exp -> termino ex1 .)
+    RPAREN          reduce using rule 42 (exp -> termino ex1 .)
+    ID              reduce using rule 42 (exp -> termino ex1 .)
+    IF              reduce using rule 42 (exp -> termino ex1 .)
+    PRINT           reduce using rule 42 (exp -> termino ex1 .)
+    RBRACK          reduce using rule 42 (exp -> termino ex1 .)
+    COMMA           reduce using rule 42 (exp -> termino ex1 .)
+
+
+state 37
+
+    (43) ex1 -> ex2 . exp
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    exp                            shift and go to state 68
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 38
+
+    (44) ex1 -> empty .
+
+    RELOP           reduce using rule 44 (ex1 -> empty .)
+    $end            reduce using rule 44 (ex1 -> empty .)
+    RPAREN          reduce using rule 44 (ex1 -> empty .)
+    ID              reduce using rule 44 (ex1 -> empty .)
+    IF              reduce using rule 44 (ex1 -> empty .)
+    PRINT           reduce using rule 44 (ex1 -> empty .)
+    RBRACK          reduce using rule 44 (ex1 -> empty .)
+    COMMA           reduce using rule 44 (ex1 -> empty .)
+
+
+state 39
+
+    (45) ex2 -> PLUS .
+
+    LPAREN          reduce using rule 45 (ex2 -> PLUS .)
+    PLUS            reduce using rule 45 (ex2 -> PLUS .)
+    MINUS           reduce using rule 45 (ex2 -> PLUS .)
+    ID              reduce using rule 45 (ex2 -> PLUS .)
+    CTEI            reduce using rule 45 (ex2 -> PLUS .)
+    CTEF            reduce using rule 45 (ex2 -> PLUS .)
+
+
+state 40
+
+    (46) ex2 -> MINUS .
+
+    LPAREN          reduce using rule 46 (ex2 -> MINUS .)
+    PLUS            reduce using rule 46 (ex2 -> MINUS .)
+    MINUS           reduce using rule 46 (ex2 -> MINUS .)
+    ID              reduce using rule 46 (ex2 -> MINUS .)
+    CTEI            reduce using rule 46 (ex2 -> MINUS .)
+    CTEF            reduce using rule 46 (ex2 -> MINUS .)
+
+
+state 41
+
+    (47) termino -> factor t1 .
+
+    PLUS            reduce using rule 47 (termino -> factor t1 .)
+    MINUS           reduce using rule 47 (termino -> factor t1 .)
+    $end            reduce using rule 47 (termino -> factor t1 .)
+    RELOP           reduce using rule 47 (termino -> factor t1 .)
+    RPAREN          reduce using rule 47 (termino -> factor t1 .)
+    ID              reduce using rule 47 (termino -> factor t1 .)
+    IF              reduce using rule 47 (termino -> factor t1 .)
+    PRINT           reduce using rule 47 (termino -> factor t1 .)
+    RBRACK          reduce using rule 47 (termino -> factor t1 .)
+    COMMA           reduce using rule 47 (termino -> factor t1 .)
+
+
+state 42
+
+    (48) t1 -> t2 . termino
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    termino                        shift and go to state 69
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 43
+
+    (49) t1 -> empty .
+    (52) t2 -> empty .
+
+  ! reduce/reduce conflict for PLUS resolved using rule 49 (t1 -> empty .)
+  ! reduce/reduce conflict for MINUS resolved using rule 49 (t1 -> empty .)
+  ! reduce/reduce conflict for ID resolved using rule 49 (t1 -> empty .)
+    PLUS            reduce using rule 49 (t1 -> empty .)
+    MINUS           reduce using rule 49 (t1 -> empty .)
+    $end            reduce using rule 49 (t1 -> empty .)
+    RELOP           reduce using rule 49 (t1 -> empty .)
+    RPAREN          reduce using rule 49 (t1 -> empty .)
+    ID              reduce using rule 49 (t1 -> empty .)
+    IF              reduce using rule 49 (t1 -> empty .)
+    PRINT           reduce using rule 49 (t1 -> empty .)
+    RBRACK          reduce using rule 49 (t1 -> empty .)
+    COMMA           reduce using rule 49 (t1 -> empty .)
+    LPAREN          reduce using rule 52 (t2 -> empty .)
+    CTEI            reduce using rule 52 (t2 -> empty .)
+    CTEF            reduce using rule 52 (t2 -> empty .)
+
+  ! PLUS            [ reduce using rule 52 (t2 -> empty .) ]
+  ! MINUS           [ reduce using rule 52 (t2 -> empty .) ]
+  ! ID              [ reduce using rule 52 (t2 -> empty .) ]
+
+
+state 44
+
+    (50) t2 -> TIMES .
+
+    LPAREN          reduce using rule 50 (t2 -> TIMES .)
+    PLUS            reduce using rule 50 (t2 -> TIMES .)
+    MINUS           reduce using rule 50 (t2 -> TIMES .)
+    ID              reduce using rule 50 (t2 -> TIMES .)
+    CTEI            reduce using rule 50 (t2 -> TIMES .)
+    CTEF            reduce using rule 50 (t2 -> TIMES .)
+
+
+state 45
+
+    (51) t2 -> DIVIDE .
+
+    LPAREN          reduce using rule 51 (t2 -> DIVIDE .)
+    PLUS            reduce using rule 51 (t2 -> DIVIDE .)
+    MINUS           reduce using rule 51 (t2 -> DIVIDE .)
+    ID              reduce using rule 51 (t2 -> DIVIDE .)
+    CTEI            reduce using rule 51 (t2 -> DIVIDE .)
+    CTEF            reduce using rule 51 (t2 -> DIVIDE .)
+
+
+state 46
+
+    (20) programa -> PROGRAM ID . DOTS p1 bloque
+
+    DOTS            shift and go to state 70
+
+
+state 47
+
+    (29) asignacion -> ID EQUAL . expresion
+    (38) expresion -> . exp e1
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    expresion                      shift and go to state 71
+    exp                            shift and go to state 60
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 48
+
+    (23) bloque -> LBRACK b1 . RBRACK
+
+    RBRACK          shift and go to state 72
+
+
+state 49
+
+    (24) b1 -> estatuto . b1
+    (24) b1 -> . estatuto b1
+    (25) b1 -> . empty
+    (26) estatuto -> . asignacion
+    (27) estatuto -> . condicion
+    (28) estatuto -> . escritura
+    (65) empty -> .
+    (29) asignacion -> . ID EQUAL expresion
+    (30) condicion -> . IF LPAREN expresion RPAREN bloque c1 DOTCOMMA
+    (33) escritura -> . PRINT LPAREN es1 RPAREN DOTCOMMA
+
+    RBRACK          reduce using rule 65 (empty -> .)
+    ID              shift and go to state 54
+    IF              shift and go to state 20
+    PRINT           shift and go to state 22
+
+    estatuto                       shift and go to state 49
+    b1                             shift and go to state 73
+    empty                          shift and go to state 50
+    asignacion                     shift and go to state 51
+    condicion                      shift and go to state 52
+    escritura                      shift and go to state 53
+
+state 50
+
+    (25) b1 -> empty .
+
+    RBRACK          reduce using rule 25 (b1 -> empty .)
+
+
+state 51
+
+    (26) estatuto -> asignacion .
+
+    ID              reduce using rule 26 (estatuto -> asignacion .)
+    IF              reduce using rule 26 (estatuto -> asignacion .)
+    PRINT           reduce using rule 26 (estatuto -> asignacion .)
+    RBRACK          reduce using rule 26 (estatuto -> asignacion .)
+
+
+state 52
+
+    (27) estatuto -> condicion .
+
+    ID              reduce using rule 27 (estatuto -> condicion .)
+    IF              reduce using rule 27 (estatuto -> condicion .)
+    PRINT           reduce using rule 27 (estatuto -> condicion .)
+    RBRACK          reduce using rule 27 (estatuto -> condicion .)
+
+
+state 53
+
+    (28) estatuto -> escritura .
+
+    ID              reduce using rule 28 (estatuto -> escritura .)
+    IF              reduce using rule 28 (estatuto -> escritura .)
+    PRINT           reduce using rule 28 (estatuto -> escritura .)
+    RBRACK          reduce using rule 28 (estatuto -> escritura .)
+
+
+state 54
+
+    (29) asignacion -> ID . EQUAL expresion
+
+    EQUAL           shift and go to state 47
+
+
+state 55
+
+    (15) vars -> VAR v1 .
+
+    $end            reduce using rule 15 (vars -> VAR v1 .)
+    LBRACK          reduce using rule 15 (vars -> VAR v1 .)
+
+
+state 56
+
+    (16) v1 -> ID . v2 DOTS tipo DOTCOMMA v1
+    (18) v2 -> . COMMA ID v2
+    (19) v2 -> . empty
+    (65) empty -> .
+
+    COMMA           shift and go to state 75
+    DOTS            reduce using rule 65 (empty -> .)
+
+    v2                             shift and go to state 74
+    empty                          shift and go to state 76
+
+state 57
+
+    (17) v1 -> empty .
+
+    $end            reduce using rule 17 (v1 -> empty .)
+    LBRACK          reduce using rule 17 (v1 -> empty .)
+
+
+state 58
+
+    (30) condicion -> IF LPAREN . expresion RPAREN bloque c1 DOTCOMMA
+    (38) expresion -> . exp e1
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    ID              reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    expresion                      shift and go to state 77
+    exp                            shift and go to state 60
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 59
+
+    (55) f1 -> LPAREN expresion . RPAREN
+
+    RPAREN          shift and go to state 78
+
+
+state 60
+
+    (38) expresion -> exp . e1
+    (39) e1 -> . e2 exp
+    (40) e1 -> . empty
+    (41) e2 -> . RELOP
+    (65) empty -> .
+
+    RELOP           shift and go to state 35
+    RPAREN          reduce using rule 65 (empty -> .)
+    $end            reduce using rule 65 (empty -> .)
+    ID              reduce using rule 65 (empty -> .)
+    IF              reduce using rule 65 (empty -> .)
+    PRINT           reduce using rule 65 (empty -> .)
+    RBRACK          reduce using rule 65 (empty -> .)
+    COMMA           reduce using rule 65 (empty -> .)
+
+    e1                             shift and go to state 32
+    e2                             shift and go to state 33
+    empty                          shift and go to state 34
+
+state 61
+
+    (42) exp -> termino . ex1
+    (43) ex1 -> . ex2 exp
+    (44) ex1 -> . empty
+    (45) ex2 -> . PLUS
+    (46) ex2 -> . MINUS
+    (65) empty -> .
+
+    PLUS            shift and go to state 39
+    MINUS           shift and go to state 40
+    RELOP           reduce using rule 65 (empty -> .)
+    $end            reduce using rule 65 (empty -> .)
+    RPAREN          reduce using rule 65 (empty -> .)
+    ID              reduce using rule 65 (empty -> .)
+    IF              reduce using rule 65 (empty -> .)
+    PRINT           reduce using rule 65 (empty -> .)
+    RBRACK          reduce using rule 65 (empty -> .)
+    COMMA           reduce using rule 65 (empty -> .)
+
+    ex1                            shift and go to state 36
+    ex2                            shift and go to state 37
+    empty                          shift and go to state 38
+
+state 62
+
+    (47) termino -> factor . t1
+    (48) t1 -> . t2 termino
+    (49) t1 -> . empty
+    (50) t2 -> . TIMES
+    (51) t2 -> . DIVIDE
+    (52) t2 -> . empty
+    (65) empty -> .
+
+    TIMES           shift and go to state 44
+    DIVIDE          shift and go to state 45
+    PLUS            reduce using rule 65 (empty -> .)
+    MINUS           reduce using rule 65 (empty -> .)
+    $end            reduce using rule 65 (empty -> .)
+    RELOP           reduce using rule 65 (empty -> .)
+    RPAREN          reduce using rule 65 (empty -> .)
+    ID              reduce using rule 65 (empty -> .)
+    IF              reduce using rule 65 (empty -> .)
+    PRINT           reduce using rule 65 (empty -> .)
+    RBRACK          reduce using rule 65 (empty -> .)
+    COMMA           reduce using rule 65 (empty -> .)
+    LPAREN          reduce using rule 65 (empty -> .)
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+    t1                             shift and go to state 41
+    t2                             shift and go to state 42
+    empty                          shift and go to state 43
+
+state 63
+
+    (59) f3 -> empty .
+
+    ID              reduce using rule 59 (f3 -> empty .)
+    CTEI            reduce using rule 59 (f3 -> empty .)
+    CTEF            reduce using rule 59 (f3 -> empty .)
+
+
+state 64
+
+    (33) escritura -> PRINT LPAREN . es1 RPAREN DOTCOMMA
+    (34) es1 -> . expresion es2
+    (35) es1 -> . ID es2
+    (38) expresion -> . exp e1
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+  ! shift/reduce conflict for ID resolved as shift
+    ID              shift and go to state 81
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+  ! ID              [ reduce using rule 65 (empty -> .) ]
+
+    es1                            shift and go to state 79
+    expresion                      shift and go to state 80
+    exp                            shift and go to state 60
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 65
+
+    (56) f2 -> f3 varcte .
+
+    TIMES           reduce using rule 56 (f2 -> f3 varcte .)
+    DIVIDE          reduce using rule 56 (f2 -> f3 varcte .)
+    LPAREN          reduce using rule 56 (f2 -> f3 varcte .)
+    PLUS            reduce using rule 56 (f2 -> f3 varcte .)
+    MINUS           reduce using rule 56 (f2 -> f3 varcte .)
+    ID              reduce using rule 56 (f2 -> f3 varcte .)
+    CTEI            reduce using rule 56 (f2 -> f3 varcte .)
+    CTEF            reduce using rule 56 (f2 -> f3 varcte .)
+    $end            reduce using rule 56 (f2 -> f3 varcte .)
+    RELOP           reduce using rule 56 (f2 -> f3 varcte .)
+    RPAREN          reduce using rule 56 (f2 -> f3 varcte .)
+    IF              reduce using rule 56 (f2 -> f3 varcte .)
+    PRINT           reduce using rule 56 (f2 -> f3 varcte .)
+    RBRACK          reduce using rule 56 (f2 -> f3 varcte .)
+    COMMA           reduce using rule 56 (f2 -> f3 varcte .)
+
+
+state 66
+
+    (60) varcte -> ID .
+
+    TIMES           reduce using rule 60 (varcte -> ID .)
+    DIVIDE          reduce using rule 60 (varcte -> ID .)
+    LPAREN          reduce using rule 60 (varcte -> ID .)
+    PLUS            reduce using rule 60 (varcte -> ID .)
+    MINUS           reduce using rule 60 (varcte -> ID .)
+    ID              reduce using rule 60 (varcte -> ID .)
+    CTEI            reduce using rule 60 (varcte -> ID .)
+    CTEF            reduce using rule 60 (varcte -> ID .)
+    $end            reduce using rule 60 (varcte -> ID .)
+    RELOP           reduce using rule 60 (varcte -> ID .)
+    RPAREN          reduce using rule 60 (varcte -> ID .)
+    IF              reduce using rule 60 (varcte -> ID .)
+    PRINT           reduce using rule 60 (varcte -> ID .)
+    RBRACK          reduce using rule 60 (varcte -> ID .)
+    COMMA           reduce using rule 60 (varcte -> ID .)
+
+
+state 67
+
+    (39) e1 -> e2 exp .
+
+    $end            reduce using rule 39 (e1 -> e2 exp .)
+    RPAREN          reduce using rule 39 (e1 -> e2 exp .)
+    ID              reduce using rule 39 (e1 -> e2 exp .)
+    IF              reduce using rule 39 (e1 -> e2 exp .)
+    PRINT           reduce using rule 39 (e1 -> e2 exp .)
+    RBRACK          reduce using rule 39 (e1 -> e2 exp .)
+    COMMA           reduce using rule 39 (e1 -> e2 exp .)
+
+
+state 68
+
+    (43) ex1 -> ex2 exp .
+
+    RELOP           reduce using rule 43 (ex1 -> ex2 exp .)
+    $end            reduce using rule 43 (ex1 -> ex2 exp .)
+    RPAREN          reduce using rule 43 (ex1 -> ex2 exp .)
+    ID              reduce using rule 43 (ex1 -> ex2 exp .)
+    IF              reduce using rule 43 (ex1 -> ex2 exp .)
+    PRINT           reduce using rule 43 (ex1 -> ex2 exp .)
+    RBRACK          reduce using rule 43 (ex1 -> ex2 exp .)
+    COMMA           reduce using rule 43 (ex1 -> ex2 exp .)
+
+
+state 69
+
+    (48) t1 -> t2 termino .
+
+    PLUS            reduce using rule 48 (t1 -> t2 termino .)
+    MINUS           reduce using rule 48 (t1 -> t2 termino .)
+    $end            reduce using rule 48 (t1 -> t2 termino .)
+    RELOP           reduce using rule 48 (t1 -> t2 termino .)
+    RPAREN          reduce using rule 48 (t1 -> t2 termino .)
+    ID              reduce using rule 48 (t1 -> t2 termino .)
+    IF              reduce using rule 48 (t1 -> t2 termino .)
+    PRINT           reduce using rule 48 (t1 -> t2 termino .)
+    RBRACK          reduce using rule 48 (t1 -> t2 termino .)
+    COMMA           reduce using rule 48 (t1 -> t2 termino .)
+
+
+state 70
+
+    (20) programa -> PROGRAM ID DOTS . p1 bloque
+    (21) p1 -> . vars
+    (22) p1 -> . empty
+    (15) vars -> . VAR v1
+    (65) empty -> .
+
+    VAR             shift and go to state 19
+    LBRACK          reduce using rule 65 (empty -> .)
+
+    p1                             shift and go to state 82
+    vars                           shift and go to state 83
+    empty                          shift and go to state 84
+
+state 71
+
+    (29) asignacion -> ID EQUAL expresion .
+
+    $end            reduce using rule 29 (asignacion -> ID EQUAL expresion .)
+    ID              reduce using rule 29 (asignacion -> ID EQUAL expresion .)
+    IF              reduce using rule 29 (asignacion -> ID EQUAL expresion .)
+    PRINT           reduce using rule 29 (asignacion -> ID EQUAL expresion .)
+    RBRACK          reduce using rule 29 (asignacion -> ID EQUAL expresion .)
+
+
+state 72
+
+    (23) bloque -> LBRACK b1 RBRACK .
+
+    $end            reduce using rule 23 (bloque -> LBRACK b1 RBRACK .)
+    ELSE            reduce using rule 23 (bloque -> LBRACK b1 RBRACK .)
+    DOTCOMMA        reduce using rule 23 (bloque -> LBRACK b1 RBRACK .)
+
+
+state 73
+
+    (24) b1 -> estatuto b1 .
+
+    RBRACK          reduce using rule 24 (b1 -> estatuto b1 .)
+
+
+state 74
+
+    (16) v1 -> ID v2 . DOTS tipo DOTCOMMA v1
+
+    DOTS            shift and go to state 85
+
+
+state 75
+
+    (18) v2 -> COMMA . ID v2
+
+    ID              shift and go to state 86
+
+
+state 76
+
+    (19) v2 -> empty .
+
+    DOTS            reduce using rule 19 (v2 -> empty .)
+
+
+state 77
+
+    (30) condicion -> IF LPAREN expresion . RPAREN bloque c1 DOTCOMMA
+
+    RPAREN          shift and go to state 87
+
+
+state 78
+
+    (55) f1 -> LPAREN expresion RPAREN .
+
+    TIMES           reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    DIVIDE          reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    LPAREN          reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    PLUS            reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    MINUS           reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    ID              reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    CTEI            reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    CTEF            reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    $end            reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    RELOP           reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    RPAREN          reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    IF              reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    PRINT           reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    RBRACK          reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+    COMMA           reduce using rule 55 (f1 -> LPAREN expresion RPAREN .)
+
+
+state 79
+
+    (33) escritura -> PRINT LPAREN es1 . RPAREN DOTCOMMA
+
+    RPAREN          shift and go to state 88
+
+
+state 80
+
+    (34) es1 -> expresion . es2
+    (36) es2 -> . COMMA es1
+    (37) es2 -> . empty
+    (65) empty -> .
+
+    COMMA           shift and go to state 90
+    RPAREN          reduce using rule 65 (empty -> .)
+
+    es2                            shift and go to state 89
+    empty                          shift and go to state 91
+
+state 81
+
+    (35) es1 -> ID . es2
+    (36) es2 -> . COMMA es1
+    (37) es2 -> . empty
+    (65) empty -> .
+
+    COMMA           shift and go to state 90
+    RPAREN          reduce using rule 65 (empty -> .)
+
+    es2                            shift and go to state 92
+    empty                          shift and go to state 91
+
+state 82
+
+    (20) programa -> PROGRAM ID DOTS p1 . bloque
+    (23) bloque -> . LBRACK b1 RBRACK
+
+    LBRACK          shift and go to state 18
+
+    bloque                         shift and go to state 93
+
+state 83
+
+    (21) p1 -> vars .
+
+    LBRACK          reduce using rule 21 (p1 -> vars .)
+
+
+state 84
+
+    (22) p1 -> empty .
+
+    LBRACK          reduce using rule 22 (p1 -> empty .)
+
+
+state 85
+
+    (16) v1 -> ID v2 DOTS . tipo DOTCOMMA v1
+    (63) tipo -> . INT
+    (64) tipo -> . FLOAT
+
+    INT             shift and go to state 27
+    FLOAT           shift and go to state 28
+
+    tipo                           shift and go to state 94
+
+state 86
+
+    (18) v2 -> COMMA ID . v2
+    (18) v2 -> . COMMA ID v2
+    (19) v2 -> . empty
+    (65) empty -> .
+
+    COMMA           shift and go to state 75
+    DOTS            reduce using rule 65 (empty -> .)
+
+    v2                             shift and go to state 95
+    empty                          shift and go to state 76
+
+state 87
+
+    (30) condicion -> IF LPAREN expresion RPAREN . bloque c1 DOTCOMMA
+    (23) bloque -> . LBRACK b1 RBRACK
+
+    LBRACK          shift and go to state 18
+
+    bloque                         shift and go to state 96
+
+state 88
+
+    (33) escritura -> PRINT LPAREN es1 RPAREN . DOTCOMMA
+
+    DOTCOMMA        shift and go to state 97
+
+
+state 89
+
+    (34) es1 -> expresion es2 .
+
+    RPAREN          reduce using rule 34 (es1 -> expresion es2 .)
+
+
+state 90
+
+    (36) es2 -> COMMA . es1
+    (34) es1 -> . expresion es2
+    (35) es1 -> . ID es2
+    (38) expresion -> . exp e1
+    (42) exp -> . termino ex1
+    (47) termino -> . factor t1
+    (53) factor -> . f1
+    (54) factor -> . f2
+    (55) f1 -> . LPAREN expresion RPAREN
+    (56) f2 -> . f3 varcte
+    (57) f3 -> . PLUS
+    (58) f3 -> . MINUS
+    (59) f3 -> . empty
+    (65) empty -> .
+
+  ! shift/reduce conflict for ID resolved as shift
+    ID              shift and go to state 81
+    LPAREN          shift and go to state 21
+    PLUS            shift and go to state 30
+    MINUS           shift and go to state 31
+    CTEI            reduce using rule 65 (empty -> .)
+    CTEF            reduce using rule 65 (empty -> .)
+
+  ! ID              [ reduce using rule 65 (empty -> .) ]
+
+    es1                            shift and go to state 98
+    expresion                      shift and go to state 80
+    exp                            shift and go to state 60
+    termino                        shift and go to state 61
+    factor                         shift and go to state 62
+    f1                             shift and go to state 25
+    f2                             shift and go to state 26
+    f3                             shift and go to state 29
+    empty                          shift and go to state 63
+
+state 91
+
+    (37) es2 -> empty .
+
+    RPAREN          reduce using rule 37 (es2 -> empty .)
+
+
+state 92
+
+    (35) es1 -> ID es2 .
+
+    RPAREN          reduce using rule 35 (es1 -> ID es2 .)
+
+
+state 93
+
+    (20) programa -> PROGRAM ID DOTS p1 bloque .
+
+    $end            reduce using rule 20 (programa -> PROGRAM ID DOTS p1 bloque .)
+
+
+state 94
+
+    (16) v1 -> ID v2 DOTS tipo . DOTCOMMA v1
+
+    DOTCOMMA        shift and go to state 99
+
+
+state 95
+
+    (18) v2 -> COMMA ID v2 .
+
+    DOTS            reduce using rule 18 (v2 -> COMMA ID v2 .)
+
+
+state 96
+
+    (30) condicion -> IF LPAREN expresion RPAREN bloque . c1 DOTCOMMA
+    (31) c1 -> . ELSE bloque
+    (32) c1 -> . empty
+    (65) empty -> .
+
+    ELSE            shift and go to state 101
+    DOTCOMMA        reduce using rule 65 (empty -> .)
+
+    c1                             shift and go to state 100
+    empty                          shift and go to state 102
+
+state 97
+
+    (33) escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .
+
+    $end            reduce using rule 33 (escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .)
+    ID              reduce using rule 33 (escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .)
+    IF              reduce using rule 33 (escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .)
+    PRINT           reduce using rule 33 (escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .)
+    RBRACK          reduce using rule 33 (escritura -> PRINT LPAREN es1 RPAREN DOTCOMMA .)
+
+
+state 98
+
+    (36) es2 -> COMMA es1 .
+
+    RPAREN          reduce using rule 36 (es2 -> COMMA es1 .)
+
+
+state 99
+
+    (16) v1 -> ID v2 DOTS tipo DOTCOMMA . v1
+    (16) v1 -> . ID v2 DOTS tipo DOTCOMMA v1
+    (17) v1 -> . empty
+    (65) empty -> .
+
+    ID              shift and go to state 56
+    $end            reduce using rule 65 (empty -> .)
+    LBRACK          reduce using rule 65 (empty -> .)
+
+    v1                             shift and go to state 103
+    empty                          shift and go to state 57
+
+state 100
+
+    (30) condicion -> IF LPAREN expresion RPAREN bloque c1 . DOTCOMMA
+
+    DOTCOMMA        shift and go to state 104
+
+
+state 101
+
+    (31) c1 -> ELSE . bloque
+    (23) bloque -> . LBRACK b1 RBRACK
+
+    LBRACK          shift and go to state 18
+
+    bloque                         shift and go to state 105
+
+state 102
+
+    (32) c1 -> empty .
+
+    DOTCOMMA        reduce using rule 32 (c1 -> empty .)
+
+
+state 103
+
+    (16) v1 -> ID v2 DOTS tipo DOTCOMMA v1 .
+
+    $end            reduce using rule 16 (v1 -> ID v2 DOTS tipo DOTCOMMA v1 .)
+    LBRACK          reduce using rule 16 (v1 -> ID v2 DOTS tipo DOTCOMMA v1 .)
+
+
+state 104
+
+    (30) condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .
+
+    $end            reduce using rule 30 (condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .)
+    ID              reduce using rule 30 (condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .)
+    IF              reduce using rule 30 (condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .)
+    PRINT           reduce using rule 30 (condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .)
+    RBRACK          reduce using rule 30 (condicion -> IF LPAREN expresion RPAREN bloque c1 DOTCOMMA .)
+
+
+state 105
+
+    (31) c1 -> ELSE bloque .
+
+    DOTCOMMA        reduce using rule 31 (c1 -> ELSE bloque .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ID in state 0 resolved as shift
+WARNING: shift/reduce conflict for CTEI in state 0 resolved as shift
+WARNING: shift/reduce conflict for CTEF in state 0 resolved as shift
+WARNING: shift/reduce conflict for ID in state 64 resolved as shift
+WARNING: shift/reduce conflict for ID in state 90 resolved as shift
+WARNING: reduce/reduce conflict in state 6 resolved using rule (parser -> asignacion)
+WARNING: rejected rule (estatuto -> asignacion) in state 6
+WARNING: reduce/reduce conflict in state 7 resolved using rule (parser -> condicion)
+WARNING: rejected rule (estatuto -> condicion) in state 7
+WARNING: reduce/reduce conflict in state 8 resolved using rule (parser -> escritura)
+WARNING: rejected rule (estatuto -> escritura) in state 8
+WARNING: reduce/reduce conflict in state 11 resolved using rule (parser -> exp)
+WARNING: rejected rule (empty -> <empty>) in state 11
+WARNING: reduce/reduce conflict in state 12 resolved using rule (parser -> termino)
+WARNING: rejected rule (empty -> <empty>) in state 12
+WARNING: reduce/reduce conflict in state 13 resolved using rule (parser -> factor)
+WARNING: rejected rule (empty -> <empty>) in state 13
+WARNING: reduce/reduce conflict in state 43 resolved using rule (t1 -> empty)
+WARNING: rejected rule (t2 -> empty) in state 43

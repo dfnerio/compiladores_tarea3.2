@@ -1,0 +1,7 @@
+program main: 
+	var uno, dos, tres : int; 
+	{ 
+		if (X > 2) { 
+			test = 3 
+		}; 
+	}
